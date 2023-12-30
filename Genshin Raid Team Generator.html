@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Genshin Raid Team Generator 4.2</title>
+	<link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
+	<style>
+		.teamGenerator{
+			margin-top: 10%;
+			margin-left: 25%;
+			margin-right: 30%;
+			border: 2px solid black;
+			width:45%;
+			background-color: #ADD8E6;
+		}
+		#localLegend{
+			margin-left: 5%;
+		}
+		#generate{
+			margin-left: 30%;
+		}
+	</style>
+</head>
+<body>
+<div class = "teamGenerator">
+<select id="localLegend">
+    <option value="Ninianne of the Lake - Rift-Subduing Lake Spirit">Ninianne of the Lake - Rift-Subduing Lake Spirit</option>
+    <option value="Vivianne of the Lake - Rift-Subduing Lake Spirit">Vivianne of the Lake - Rift-Subduing Lake Spirit</option>
+    <option value='Yseut - "The Cold Hand"'>Yseut - "The Cold Hand"</option>
+    <option value="Deianeira of Snezhevna - Risky Investment Actuary">Deianeira of Snezhevna - Risky Investment Actuary</option>
+    <option value="Automated Supercomputing Field Generator - Verified Type Aur001">Automated Supercomputing Field Generator - Verified Type Aur001</option>
+    <option value='Liam - "Fading Rainbow"'>Liam - "Fading Rainbow"</option>
+    <option value='Rocky Avildsen - "A Gentleman Personality"'>Rocky Avildsen - "A Gentleman Personality</option>
+</select>
+  <br><br>
+  <div id = "generate">
+  <input type="submit" value="Generate" onclick="startSingleProcess()">
+  <input type="submit" value="Generate All" onclick="startBulkProcess()">
+	</div>
+	<div id ="outputParent">
+		<div id ="output">
+		 <div id="target">
+		 </div>
+		 <div id="theme">
+		 </div>
+		 <div id="eligibleCharacters">
+		 </div>
+	</div>
+</div>
+</body>
+<script type="text/javascript">
+
+function startSingleProcess(){
+	generateTheme(false);
+	copyText();
+	console.log("Single Process Complete");
+}
+
+function startBulkProcess(){
+    generateTheme(true);
+    copyText();
+    console.log("Bulk Process Complete");
+}
+
+function generateTheme(isBulk){
+	let selectedLocalLegend = document.getElementById("localLegend").value;
+	let themeDictionary = [];
+
+	let theme1 = {
+		theme: "Bow Users",
+		eligibleCharacters: ["Aloy", "Amber", "Collei", "Diona", "Faruzan", "Fischl", "Ganyu", "Gorou", "Kujou Sara", "Lyney", "Tartaglia", "Tighnari", "Venti", "Yelan", "Yoimiya", ]
+	};
+	themeDictionary.push(theme1);
+
+	let theme2 = {
+		theme: "Catalyst Users",
+		eligibleCharacters: ["Baizhu", "Barbara", "Charlotte", "Klee", "Lisa", "Mona", "Nahida", "Neuvillette", "Ningguang", "Sangonomiya Kokomi", "Shikanoin Heizou", "Sucrose", "Wanderer", "Wriothesley", "Yae Miko", "Yanfei"]
+	};
+	themeDictionary.push(theme2);
+
+	let theme3 = {
+		theme: "Claymore Users",
+		eligibleCharacters: ["Arataki Itto", "Beidou", "Chongyun", "Dehya", "Diluc", "Dori", "Eula", "Freminet", "Kaveh", "Navia", "Noelle", "Razor", "Sayu", "Xinyan"]
+	};
+	themeDictionary.push(theme3);
+
+	let theme4 = {
+		theme: "Polearm Users",
+		eligibleCharacters: ["Candace", "Chevreuse", "Cyno", "Hu Tao", "Mika", "Raiden Shogun", "Rosaria", "Shenhe", "Thoma", "Xiangling", "Xiao", "Yaoyao", "Yun Jin", "Zhongli"]
+	};
+	themeDictionary.push(theme4);
+
+	let theme5 = {
+		theme: "Sword Users",
+		eligibleCharacters: ["Albedo", "Alhaitham", "Bennett", "Furina", "Jean", "Kaedahara Kazuha", "Kaeya", "Kamisato Ayaka", "Kamisato Ayato", "Keqing", "Kirara", "Kuki Shinobu", "Layla", "Lynette", "Nilou", "Qiqi", "Traveler", "Xingqiu"]
+	};
+	themeDictionary.push(theme5);
+
+	let theme6 = {
+		theme: "Mondstadt Characters",
+		eligibleCharacters: ["Albedo", "Amber", "Barbara", "Bennett", "Diluc", "Diona", "Eula", "Fischl", "Jean", "Kaeya", "Klee", "Lisa", "Mika", "Mona", "Noelle", "Razor", "Rosaria", "Sucrose", "Venti"]
+	};
+	themeDictionary.push(theme6);
+
+	let theme7 = {
+		theme: "Liyue Characters",
+		eligibleCharacters: ["Baizhu", "Beidou", "Chongyun", "Ganyu", "Hu Tao", "Keqing", "Ningguang", "Qiqi", "Shenhe", "Xiangling", "Xiao", "Xingqiu", "Xinyan", "Yanfei", "Yaoyao", "Yelan", "Yun Jin", "Zhongli"]
+	};
+	themeDictionary.push(theme7);
+
+	let theme8 = {
+		theme: "Inazuma Characters",
+		eligibleCharacters: ["Arataki Itto", "Gorou", "Kaedahara Kazuha", "Kamisato Ayaka", "Kamisato Ayato", "Kirara", "Kujou Sara", "Kuki Shinobu", "Raiden Shogun", "Sangonomiya Kokomi", "Sayu", "Shikanoin Heizou", "Thoma", "Yae Miko", "Yoimiya"]
+	};
+	themeDictionary.push(theme8);
+
+	let theme9 = {
+		theme: "Sumeru Characters",
+		eligibleCharacters: ["Alhaitham", "Candace", "Collei", "Cyno", "Dehya", "Dori", "Faruzan", "Kaveh", "Layla", "Nahida", "Nilou", "Tighnari", "Wanderer"]
+	};
+	themeDictionary.push(theme9);
+
+	let theme10 = {
+		theme: "Fontaine Characters",
+		eligibleCharacters: ["Charlotte", "Chevreuse", "Freminet", "Furina", "Lynette", "Lyney", "Neuvillette", "Wriothesley"]
+	};
+	themeDictionary.push(theme10);
+
+	let theme11 = {
+		theme: "Anemo Characters",
+		eligibleCharacters: ["Anemo Traveler", "Faruzan", "Jean", "Kaedahara Kazuha", "Lynette", "Sayu", "Shikanoin Heizou", "Sucrose", "Venti", "Wanderer", "Xiao"]
+	};
+	themeDictionary.push(theme11);
+
+	let theme12 = {
+		theme: "Geo Characters",
+		eligibleCharacters: ["Albedo", "Arataki Itto", "Geo Traveler", "Gorou", "Ningguang", "Navia", "Noelle", "Yun Jin", "Zhongli"]
+	};
+	themeDictionary.push(theme12);
+
+	let theme13 = {
+		theme: "Electro Characters",
+		eligibleCharacters: ["Beidou", "Cyno", "Dori", "Electro Traveler", "Fischl", "Keqing", "Kujou Sara", "Kuki Shinobu", "Lisa", "Raiden Shogun", "Razor", "Yae Miko"]
+	};
+	themeDictionary.push(theme13);
+
+	let theme14 = {
+		theme: "Dendro Characters",
+		eligibleCharacters: ["Alhaitham", "Baizhu", "Collei", "Dendro Traveler", "Kaveh", "Kirara", "Nahida", "Tighnari", "Yaoyao"]
+	};
+	themeDictionary.push(theme14);
+
+	let theme15 = {
+		theme: "Hydro Characters",
+		eligibleCharacters: ["Barbara", "Candace", "Furina", "Hydro Traveler", "Kamisato Ayato", "Mona", "Neuvillette", "Nilou", "Sangonomiya Kokomi", "Tartaglia", "Xingqiu", "Yelan"]
+	};
+	themeDictionary.push(theme15);
+
+	let theme16 = {
+		theme: "Pyro Characters",
+		eligibleCharacters: ["Amber", "Bennett", "Chevreuse", "Dehya", "Diluc", "Hu Tao", "Klee", "Lyney", "Thoma", "Xiangling", "Xinyan", "Yanfei", "Yoimiya"]
+	};
+	themeDictionary.push(theme16);
+
+	let theme17 = {
+		theme: "Cryo Characters",
+		eligibleCharacters: ["Aloy", "Charlotte", "Chongyun", "Diona", "Eula", "Freminet", "Ganyu", "Kaeya", "Kamisato Ayaka", "Layla", "Mika", "Qiqi", "Rosaria", "Shenhe", "Wriothesley"]
+	};
+	themeDictionary.push(theme17);
+
+	let theme18 = {
+		theme: "Standard Banner",
+		eligibleCharacters: ["Diluc", "Jean", "Keqing", "Qiqi", "Mona", "Tighnari"]
+	};
+	themeDictionary.push(theme18);
+
+	let theme19 = {
+		theme: "Freebie Characters",
+		eligibleCharacters: ["Amber", "Barbara", "Beidou", "Bennett", "Collei", "Diona", "Dori", "Faruzan", "Fischl", "Freminet", "Kaeya", "Layla", "Lisa", "Lynette", "Traveler", "Xiangling", "Xingqiu", "Xinyan"]
+	};
+	themeDictionary.push(theme19);
+
+	let theme20 = {
+		theme: "Lantern Rite 4 Stars",
+		eligibleCharacters: ["Beidou", "Chongyun", "Ningguang", "Xiangling", "Xinyan", "Xingqiu", "Yanfei", "Yun Jin", "Yaoyao"]
+	};
+	themeDictionary.push(theme20);
+
+	let theme21 = {
+		theme: "Summoners",
+		eligibleCharacters: ["Fischl", "Furina", "Sangonomiya Kokomi", "Yae Miko", "Yaoyao"]
+	};
+	themeDictionary.push(theme21);
+
+	let theme22 = {
+		theme: "Nilou Bloom",
+		eligibleCharacters: ["Nilou", "Alhaitham", "Baizhu", "Barbara", "Candace", "Collei", "Dendro Traveler", "Furina", "Hydro Traveler", "Kamisato Ayato", "Kaveh", "Kirara", "Mona", "Nahida", "Neuvillette", "Sangonomiya Kokomi", "Tartaglia", "Tighnari", "Xingqiu", "Yaoyao", "Yelan"]
+	};
+	themeDictionary.push(theme22);
+
+	let theme23 = {
+		theme: "Explorers",
+		eligibleCharacters: ["Kaedahara Kazuha", "Kirara", "Lynette", "Sayu", "Venti", "Wanderer", "Yelan"]
+	};
+	themeDictionary.push(theme23);
+
+	let theme24 = {
+		theme: "Circle Impact",
+		eligibleCharacters: ["Amber", "Bennett", "Charlotte", "Chongyun", "Collei", "Dehya", "Diona", "Jean", "Kamisato Ayato", "Lisa", "Lynette", "Rosaria", "Sayu", "Sucrose"]
+	};
+	themeDictionary.push(theme24);
+
+	let theme25 = {
+		theme: "Small Squad",
+		eligibleCharacters: ["Diona", "Dori", "Klee", "Nahida", "Qiqi", "Sayu", "Yaoyao"]
+	};
+	themeDictionary.push(theme25);
+
+	let theme26 = {
+		theme: "Counterattackers",
+		eligibleCharacters: ["Beidou", "Candace", "Yun Jin"]
+	};
+	themeDictionary.push(theme26);
+
+	let theme27 = {
+		theme: "Shielders",
+		eligibleCharacters: ["Diona", "Kirara", "Layla", "Noelle", "Thoma", "Xinyan", "Zhongli"]
+	};
+	themeDictionary.push(theme27);
+
+	//Generates a random theme and will repeat if the process is used to generate in bulk.
+	if (isBulk){
+		document.getElementById("outputParent").innerHTML = '<div id ="output">';
+    document.getElementById("outputParent").innerHTML += '<div id="target">';
+    document.getElementById("outputParent").innerHTML += '</div>';
+    document.getElementById("outputParent").innerHTML += '<div id="theme">';
+    document.getElementById("outputParent").innerHTML += '</div>';
+    document.getElementById("outputParent").innerHTML += '<div id="eligibleCharacters">';
+    document.getElementById("outputParent").innerHTML += '</div>';
+    document.getElementById("outputParent").innerHTML += '</div>';
+		let localLegendList = document.getElementById("localLegend");
+		let themeIndex = Math.floor(Math.random()*themeDictionary.length);
+		let selectedTheme = themeDictionary[themeIndex];
+		let outputTheme = selectedTheme.theme;
+		let outputEligibleCharacters = selectedTheme.eligibleCharacters.join(", ");
+		generateOutput(localLegendList.options[0].value, outputTheme, outputEligibleCharacters, "");
+		themeDictionary.splice(themeIndex, 1);
+	    for (let i = 1; i < localLegendList.length; i++) {
+	    	document.getElementById("outputParent").innerHTML += '<br>';
+        document.getElementById("outputParent").innerHTML += '<div id ="output"' + i +'>';
+        document.getElementById("outputParent").innerHTML += '<div id="target' + i + '">';
+        document.getElementById("outputParent").innerHTML += '</div>';
+        document.getElementById("outputParent").innerHTML += '<div id="theme' + i +'">';
+        document.getElementById("outputParent").innerHTML += '</div>';
+        document.getElementById("outputParent").innerHTML += '<div id="eligibleCharacters' + i + '">';
+        document.getElementById("outputParent").innerHTML += '</div>';
+        let themeIndex = Math.floor(Math.random()*themeDictionary.length);
+        let selectedTheme = themeDictionary[themeIndex];
+        let outputTheme = selectedTheme.theme;
+        let outputEligibleCharacters = selectedTheme.eligibleCharacters.join(", "); 
+        generateOutput(localLegendList.options[i].value, outputTheme, outputEligibleCharacters, i);
+        themeDictionary.splice(themeIndex, 1);
+  	}
+	}
+	else{
+
+		// Need to clear out extra tags and then do standard
+		document.getElementById("outputParent").innerHTML = '<div id ="output">';
+    document.getElementById("outputParent").innerHTML += '<div id="target">';
+    document.getElementById("outputParent").innerHTML += '</div>';
+    document.getElementById("outputParent").innerHTML += '<div id="theme">';
+    document.getElementById("outputParent").innerHTML += '</div>';
+    document.getElementById("outputParent").innerHTML += '<div id="eligibleCharacters">';
+    document.getElementById("outputParent").innerHTML += '</div>';
+    document.getElementById("outputParent").innerHTML += '</div>';
+
+		let themeIndex = Math.floor(Math.random()*themeDictionary.length);
+		let selectedTheme = themeDictionary[themeIndex];
+		let outputTheme = selectedTheme.theme;
+		let outputEligibleCharacters = selectedTheme.eligibleCharacters.join(", ");
+		generateOutput(selectedLocalLegend, outputTheme, outputEligibleCharacters, "");
+	}
+	
+}
+
+//Generates Output based on the selectedLocalLegend, theme, and eligible characters
+function generateOutput(selectedLocalLegend, theme, eligibleCharacters, appendedTag){
+	document.getElementById("target" + appendedTag).innerHTML = "<b>Target: </b>" + selectedLocalLegend;
+	document.getElementById("theme" + appendedTag).innerHTML = "<b>Theme: </b>" + theme;
+	document.getElementById("eligibleCharacters" + appendedTag).innerHTML = "<b>Eligible Characters: </b>" + eligibleCharacters;
+}
+
+//Saves the output in the outputParent div to the clipboard
+function copyText() {
+  let range, selection, worked;
+  let element = document.getElementById("outputParent");
+  if (document.body.createTextRange) {
+    range = document.body.createTextRange();
+    range.moveToElementText(element);
+    range.select();
+  } else if (window.getSelection) {
+    selection = window.getSelection();        
+    range = document.createRange();
+    range.selectNodeContents(element);
+    selection.removeAllRanges();
+    selection.addRange(range);
+  }
+  
+  try {
+    document.execCommand('copy');
+    // alert('text copied');
+  }
+  catch (err) {
+    alert('unable to copy text');
+  }
+}
+
+</script>
+</html>
